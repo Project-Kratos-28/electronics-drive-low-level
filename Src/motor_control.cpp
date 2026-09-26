@@ -77,7 +77,7 @@ void MotorControl_Init(void) {
 	    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 32767);
 
 	    // 3. Force Direction Pin HIGH
-	    HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET);
+	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_SET);
 
 	    // Start TIM1 in Encoder mode
 	    HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
