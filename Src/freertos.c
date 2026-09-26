@@ -117,34 +117,27 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
+	MotorControl_Init();
+
+	  TickType_t xLastWakeTime = xTaskGetTickCount();
+	  const TickType_t xFrequency = pdMS_TO_TICKS(10); // 10ms = 100Hz execution rate
+
+	  uint32_t print_counter = 0;
+	  const char *msg = "Motor PID Loop Running!\r\n";
   /* Infinite loop */
   for(;;)
-  {
-	  // 1. Initialize hardware timers, encoder start, and motor driver
-	    MotorControl_Init();
+  {	// 2. Compute 100Hz motor PID control loop
+      MotorControl_Update(0.01f);
 
-	    TickType_t xLastWakeTime = xTaskGetTickCount();
-	    const TickType_t xFrequency = pdMS_TO_TICKS(10); // 10ms = 100Hz execution rate
+      // 3. Output telemetry every 100 iterations (100 * 10ms = 1000ms = 1 second)
+      if (++print_counter >= 100)
+      {
+        HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), 100);
+        print_counter = 0;
+      }
 
-	    uint32_t print_counter = 0;
-	    const char *msg = "Motor PID Loop Running!\r\n";
-
-	    /* Infinite loop */
-	    for(;;)
-	    {
-	      // 2. Compute 100Hz motor PID control loop
-	      MotorControl_Update(0.01f);
-
-	      // 3. Output telemetry every 100 iterations (100 * 10ms = 1000ms = 1 second)
-	      if (++print_counter >= 100)
-	      {
-	        HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), 100);
-	        print_counter = 0;
-	      }
-
-	      // 4. Wait for exact 10ms period (prevents execution time drift)
-	      vTaskDelayUntil(&xLastWakeTime, xFrequency);
-	    }
+      // 4. Wait for exact 10ms period (prevents execution time drift)
+      vTaskDelayUntil(&xLastWakeTime, xFrequency);
   }
   /* USER CODE END StartDefaultTask */
 }
