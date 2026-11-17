@@ -1,0 +1,9 @@
+../Core/Src/motor_control.cpp:24:10:bool motor_ros_init(rcl_node_t*, rclc_executor_t*)	16	static
+../Core/Src/motor_control.cpp:25:10:void motor_ros_fini(rcl_node_t*)	16	static
+../Core/Src/motor_control.cpp:26:10:void motor_ros_publish()	4	static
+../Core/Src/motor_control.cpp:70:14:float ReadDriveSpeedRPM(uint8_t, float)	48	static
+../Core/Src/motor_control.cpp:94:6:void MotorControl_Init()	88	static
+../Core/Src/motor_control.cpp:122:6:void MotorControl_Update(float)	96	static
+../Core/Src/motor_control.cpp:167:6:void motor_control_Run(void*)	16	static
+../Core/Src/motor_control.cpp:182:1:void __static_initialization_and_destruction_0()	32	static
+../Core/Src/motor_control.cpp:182:1:cpp)	8	static

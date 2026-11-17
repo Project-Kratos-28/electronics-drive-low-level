@@ -1,0 +1,9 @@
+../Core/Src/SpeedMotor.cpp:3:1:SpeedMotor::SpeedMotor(TIM_HandleTypeDef*, uint32_t, uint32_t, GPIO_TypeDef*, uint16_t, uint16_t, float, float, float)	1
+../Core/Src/SpeedMotor.cpp:14:6:void SpeedMotor::begin()	1
+../Core/Src/SpeedMotor.cpp:20:6:void SpeedMotor::setTargetSpeed(float)	1
+../Core/Src/SpeedMotor.cpp:24:6:void SpeedMotor::setGains(float, float, float)	1
+../Core/Src/SpeedMotor.cpp:28:6:void SpeedMotor::update(float, float)	1
+../Core/Src/SpeedMotor.cpp:34:6:void SpeedMotor::stop()	6
+../Core/Src/SpeedMotor.cpp:41:7:float SpeedMotor::getOutput() const	1
+../Core/Src/SpeedMotor.cpp:45:7:float SpeedMotor::getTargetSpeed() const	1
+../Core/Src/SpeedMotor.cpp:49:6:void SpeedMotor::driveOutput(float)	9
